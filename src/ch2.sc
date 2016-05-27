@@ -39,7 +39,29 @@ cd(0)
 cd(-3)
 
 // 6. Write a for loop for computing the product of the Unicode codes of all letters in a string. For example, the product of the characters in "Hello" is 9415087488L.
+def unicodeProductLoop(word:String) : Long = {
+  var product : Long = 1;
+  for (j <- 0 until word.size){
+    product = product * word(j)
+  }
+  product
+}
+print("LOOP Hello :")
+unicodeProductLoop("Hello")
+
 // 7. Solve the preceding exercise without writing a loop. (Hint: Look at the StringOps Scaladoc.)
+def unicodeProduct(word:String) : Long = {
+  if (word.size > 0) {
+    word.head * unicodeProduct(word.tail)
+  } else {
+    1
+  }
+}
+print("NO LOOP Hello :")
+unicodeProduct("Hello")
+
 // 8. Write a function product( s : String) that computes the product, as described in the preceding exercises.
+
 // 9. Make the function of the preceding exercise a recursive function.
+
 // 10. Write a function that computes xn, where n is an integer. Use the following recursive definition: • xn = y . y if n is even and positive, where y = xn / 2. • xn = x·xn – 1 if n is odd and positive. • x0 = 1. • xn = 1 / x– n if n is negative. Don’t use a return statement.
