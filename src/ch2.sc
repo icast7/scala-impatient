@@ -39,29 +39,69 @@ cd(0)
 cd(-3)
 
 // 6. Write a for loop for computing the product of the Unicode codes of all letters in a string. For example, the product of the characters in "Hello" is 9415087488L.
-def unicodeProductLoop(word:String) : Long = {
+print("LOOP Hello :")
+val word = "Hello"
+var product : Long = 1;
+for (j <- 0 until word.size){
+  product = product * word(j)
+}
+product
+
+// 7. Solve the preceding exercise without writing a loop. (Hint: Look at the StringOps Scaladoc.)
+print("NO LOOP Hello :")
+var p : Long = 1
+"Hello".map(c => p = c * p)
+p
+
+
+// 8. Write a function product( s : String) that computes the product, as described in the preceding exercises.
+def productOfString(word:String) : Long = {
   var product : Long = 1;
   for (j <- 0 until word.size){
     product = product * word(j)
   }
   product
 }
-print("LOOP Hello :")
-unicodeProductLoop("Hello")
+productOfString("Hello")
 
-// 7. Solve the preceding exercise without writing a loop. (Hint: Look at the StringOps Scaladoc.)
-def unicodeProduct(word:String) : Long = {
+// 9. Make the function of the preceding exercise a recursive function.
+def recursiveProductOfString(word:String) : Long = {
   if (word.size > 0) {
-    word.head * unicodeProduct(word.tail)
+    word.head * recursiveProductOfString(word.tail)
   } else {
     1
   }
 }
-print("NO LOOP Hello :")
-unicodeProduct("Hello")
+recursiveProductOfString("Hello")
 
-// 8. Write a function product( s : String) that computes the product, as described in the preceding exercises.
+// 10. Write a function that computes x^n, where n is an integer. Use the following recursive definition:
+// • x^n = y*y if n is even and positive, where y = x^(n/2)
+// • x^n = x*x^(n–1) if n is odd and positive.
+// • x^0 = 1
+// • x^n = 1/x^(–n) if n is negative.
+// Don’t use a return statement.
 
-// 9. Make the function of the preceding exercise a recursive function.
-
-// 10. Write a function that computes xn, where n is an integer. Use the following recursive definition: • xn = y . y if n is even and positive, where y = xn / 2. • xn = x·xn – 1 if n is odd and positive. • x0 = 1. • xn = 1 / x– n if n is negative. Don’t use a return statement.
+def xtothenthpower(x: Double, n: Int): Double = {
+  var result : Double = 0
+  if (n == 0 ) {
+    //x^0 = 1
+    val y : Double = 1
+    y
+  } else if (n < 0) {
+    //x^n = 1/x^(–n) if n is negative.
+    val y : Double = 1/(Math.pow(x, -1 * n))
+    y
+  } else if (n % 2 == 0) {
+    //x^n = y*y if n is even and positive, where y = x^(n/2)
+    val y : Double = Math.pow(x, n/2)
+    y * y
+  } else {
+    //x^n = x*x^(n–1) if n is odd and positive.
+    val y : Double = x * Math.pow(x, n - 1)
+    y
+  }
+}
+xtothenthpower(2, 0)
+xtothenthpower(2, -2)
+xtothenthpower(2, 4)
+xtothenthpower(2, 5)
