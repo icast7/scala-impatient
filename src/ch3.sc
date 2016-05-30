@@ -1,6 +1,10 @@
 // 1. Write a code snippet that sets a to an array of n random integers between 0 (inclusive) and n (exclusive).
+import scala.util.Random
+val n = 5
+val a = (for (i <- 1 to n) yield Random.nextInt(n)).toArray
 
 // 2. Write a loop that swaps adjacent elements of an array of integers. For example, Array( 1, 2, 3, 4, 5) becomes Array( 2, 1, 4, 3, 5).
+//TODO
 
 // 3. Repeat the preceding assignment, but produce a new array with the swapped values. Use for/ yield.
 
