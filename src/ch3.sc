@@ -33,7 +33,14 @@ val arrayWithoutDuplicates = arrayWithDuplicates.distinct
 
 // 8. Rewrite the example at the end of Section 3.4, “Transforming Arrays,” on page 32. Collect indexes of the negative elements, reverse the sequence, drop the last index, and call a.remove( i) for each index. Compare the efficiency of this approach with the two approaches in Section 3.4.
 
+
+
 // 9. Make a collection of all time zones returned by java.util.TimeZone.getAvailableIDs that are in America. Strip off the "America/" prefix and sort the result.
+import java.util.TimeZone
+val timeZones = TimeZone.getAvailableIDs
+    //Reverse sorted to test it works
+val americaTimeZones = timeZones.filter(_.contains("America")).map(_.replace("America/","")).sortWith(_ > _)
+
 
 // 10. Import java.awt.datatransfer._ and make an object of type SystemFlavorMap with the call Click here to view code image val flavors = SystemFlavorMap.getDefaultFlavorMap(). asInstanceOf[ SystemFlavorMap] Then call the getNativesForFlavor method with parameter DataFlavor.imageFlavor and get the return value as a Scala buffer. (Why this obscure class? It’s hard to find uses of java.util.List in the standard Java library.)
 
