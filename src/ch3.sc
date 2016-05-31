@@ -14,7 +14,14 @@ val a = (for (i <- 1 to n) yield Random.nextInt(n)).toArray
 val myArray = Array(1.23, 4.54, 6.54)
 val average = myArray.sum/myArray.length
 
-// 6. How do you rearrange the elements of an Array[ Int] so that they appear in reverse sorted order? How do you do the same with an ArrayBuffer[ Int]?
+// 6. How do you rearrange the elements of an Array[Int] so that they appear in reverse sorted order? How do you do the same with an ArrayBuffer[Int]?
+import scala.collection.mutable.ArrayBuffer
+
+val originalArray = Array(1,2,3,4,5)
+val originalArrayBuffer = ArrayBuffer(6,7,8,9,10)
+
+val b = for (i<- (0 until originalArray.length).reverse) yield originalArray(i)
+val c = for (i<- (0 until originalArrayBuffer.length).reverse) yield originalArrayBuffer(i)
 
 // 7. Write a code snippet that produces all values from an array with duplicates removed. (Hint: Look at Scaladoc.)
 
