@@ -10,7 +10,9 @@ val a = (for (i <- 1 to n) yield Random.nextInt(n)).toArray
 
 // 4. Given an array of integers, produce a new array that contains all positive values of the original array, in their original order, followed by all values that are zero or negative, in their original order.
 
-// 5. How do you compute the average of an Array[ Double]?
+// 5. How do you compute the average of an Array[Double]?
+val myArray = Array(1.23, 4.54, 6.54)
+val average = myArray.sum/myArray.length
 
 // 6. How do you rearrange the elements of an Array[ Int] so that they appear in reverse sorted order? How do you do the same with an ArrayBuffer[ Int]?
 
