@@ -7,8 +7,12 @@ val a = (for (i <- 1 to n) yield Random.nextInt(n)).toArray
 //TODO
 
 // 3. Repeat the preceding assignment, but produce a new array with the swapped values. Use for/ yield.
+//TODO
 
 // 4. Given an array of integers, produce a new array that contains all positive values of the original array, in their original order, followed by all values that are zero or negative, in their original order.
+//TODO
+//val b = for (i<- (0 until originalArray.length).reverse) yield originalArray(i)
+//val c = for (i<- (0 until originalArrayBuffer.length).reverse) yield originalArrayBuffer(i)
 
 // 5. How do you compute the average of an Array[Double]?
 val myArray = Array(1.23, 4.54, 6.54)
@@ -17,13 +21,15 @@ val average = myArray.sum/myArray.length
 // 6. How do you rearrange the elements of an Array[Int] so that they appear in reverse sorted order? How do you do the same with an ArrayBuffer[Int]?
 import scala.collection.mutable.ArrayBuffer
 
-val originalArray = Array(1,2,3,4,5)
-val originalArrayBuffer = ArrayBuffer(6,7,8,9,10)
+val originalArray = Array(1,3,2,5,4)
+val originalArrayBuffer = ArrayBuffer(7,6,8,10,9)
 
-val b = for (i<- (0 until originalArray.length).reverse) yield originalArray(i)
-val c = for (i<- (0 until originalArrayBuffer.length).reverse) yield originalArrayBuffer(i)
+val array = originalArray.sortWith(_ > _)
+val arrayBuffer = originalArrayBuffer.sortWith(_ > _)
 
 // 7. Write a code snippet that produces all values from an array with duplicates removed. (Hint: Look at Scaladoc.)
+val arrayWithDuplicates = Array(1,3,2,5,4,1,3,2,5,4)
+val arrayWithoutDuplicates = arrayWithDuplicates.distinct
 
 // 8. Rewrite the example at the end of Section 3.4, “Transforming Arrays,” on page 32. Collect indexes of the negative elements, reverse the sequence, drop the last index, and call a.remove( i) for each index. Compare the efficiency of this approach with the two approaches in Section 3.4.
 
