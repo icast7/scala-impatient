@@ -1,35 +1,36 @@
 // 1. Write a code snippet that sets a to an array of n random integers between 0 (inclusive) and n (exclusive).
+import scala.collection.mutable.ArrayBuffer
 import scala.util.Random
 val n = 5
 val a = (for (i <- 1 to n) yield Random.nextInt(n)).toArray
 
 // 2. Write a loop that swaps adjacent elements of an array of integers. For example, Array( 1, 2, 3, 4, 5) becomes Array( 2, 1, 4, 3, 5).
-val adjArray = Array(1,2,3,4,5)
-for (i <- 0 until adjArray.length if i % 2 == 1) {
-  val a = adjArray(i-1)
-  val b = adjArray(i)
-  adjArray(i)=a
-  adjArray(i-1)=b
+val arrayEx2 = Array(1,2,3,4,5)
+for (i <- 0 until arrayEx2.length if i % 2 == 1) {
+  val a = arrayEx2(i-1)
+  val b = arrayEx2(i)
+  arrayEx2(i)=a
+  arrayEx2(i-1)=b
 }
 print("Modified Array:")
-adjArray
+arrayEx2
 
 // 3. Repeat the preceding assignment, but produce a new array with the swapped values. Use for/ yield.
-val adjArrayAlt = Array(1,2,3,4,5)
+val arrayEx3 = Array(1,2,3,4,5)
 print("Modified Array:")
-val newAdjArray = for (i <- 0 until adjArrayAlt.length) yield {
+val newAdjArray = for (i <- 0 until arrayEx3.length) yield {
   if (i % 2 == 1) {
-    adjArrayAlt(i-1)
+    arrayEx3(i-1)
   } else {
-    val myIndex = if (i + 1 == adjArrayAlt.length) i else i + 1
-    adjArrayAlt(myIndex)
+    val myIndex = if (i + 1 == arrayEx3.length) i else i + 1
+    arrayEx3(myIndex)
   }
 }
 
 // 4. Given an array of integers, produce a new array that contains all positive values of the original array, in their original order, followed by all values that are zero or negative, in their original order.
-//TODO
-//val b = for (i<- (0 until originalArray.length).reverse) yield originalArray(i)
-//val c = for (i<- (0 until originalArrayBuffer.length).reverse) yield originalArrayBuffer(i)
+val arrayEx4 = Array(1,0,2,-11,3,-13,4,-15,5)
+var resultEx4 = ArrayBuffer[Int]()
+resultEx4 ++= arrayEx4.filter(_ > 0)++= arrayEx4.filter(_ <= 0)
 
 // 5. How do you compute the average of an Array[Double]?
 val myArray = Array(1.23, 4.54, 6.54)
