@@ -78,6 +78,11 @@ val timeZones = TimeZone.getAvailableIDs
     //Reverse sorted to test it works
 val americaTimeZones = timeZones.filter(_.contains("America")).map(_.replace("America/","")).sortWith(_ > _)
 
-// 10. Import java.awt.datatransfer._ and make an object of type SystemFlavorMap with the call Click here to view code image val flavors = SystemFlavorMap.getDefaultFlavorMap(). asInstanceOf[ SystemFlavorMap] Then call the getNativesForFlavor method with parameter DataFlavor.imageFlavor and get the return value as a Scala buffer. (Why this obscure class? It’s hard to find uses of java.util.List in the standard Java library.)
+// 10. Import java.awt.datatransfer._ and make an object of type SystemFlavorMap with the call val flavors = SystemFlavorMap.getDefaultFlavorMap(). asInstanceOf[ SystemFlavorMap] Then call the getNativesForFlavor method with parameter DataFlavor.imageFlavor and get the return value as a Scala buffer. (Why this obscure class? It’s hard to find uses of java.util.List in the standard Java library.)
 import java.awt.datatransfer._
-//TODO
+import scala.collection.JavaConversions.asScalaBuffer
+import scala.collection.mutable.Buffer
+
+val flavors = SystemFlavorMap.getDefaultFlavorMap().asInstanceOf[SystemFlavorMap]
+val result : Buffer[String] = flavors.getNativesForFlavor(DataFlavor.imageFlavor)
+result
