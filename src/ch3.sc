@@ -16,7 +16,7 @@ print("Modified Array:")
 arrayEx2
 
 // 3. Repeat the preceding assignment, but produce a new array with the swapped values. Use for/ yield.
-val arrayEx3 = Array(1,2,3,4,5)
+val arrayEx3 = Array(20,19,18,17,1,2,3)
 print("Modified Array:")
 val newAdjArray = for (i <- 0 until arrayEx3.length) yield {
   if (i % 2 == 1) {
@@ -70,7 +70,6 @@ for (i <- iOfNegElements){
     ex34.remove(i)
 }
 ex34
-
 
 // 9. Make a collection of all time zones returned by java.util.TimeZone.getAvailableIDs that are in America. Strip off the "America/" prefix and sort the result.
 import java.util.TimeZone
