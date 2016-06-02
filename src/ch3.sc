@@ -4,10 +4,27 @@ val n = 5
 val a = (for (i <- 1 to n) yield Random.nextInt(n)).toArray
 
 // 2. Write a loop that swaps adjacent elements of an array of integers. For example, Array( 1, 2, 3, 4, 5) becomes Array( 2, 1, 4, 3, 5).
-//TODO
+val adjArray = Array(1,2,3,4,5)
+for (i <- 0 until adjArray.length if i % 2 == 1) {
+  val a = adjArray(i-1)
+  val b = adjArray(i)
+  adjArray(i)=a
+  adjArray(i-1)=b
+}
+print("Modified Array:")
+adjArray
 
 // 3. Repeat the preceding assignment, but produce a new array with the swapped values. Use for/ yield.
-//TODO
+val adjArrayAlt = Array(1,2,3,4,5)
+print("Modified Array:")
+val newAdjArray = for (i <- 0 until adjArrayAlt.length) yield {
+  if (i % 2 == 1) {
+    adjArrayAlt(i-1)
+  } else {
+    val myIndex = if (i + 1 == adjArrayAlt.length) i else i + 1
+    adjArrayAlt(myIndex)
+  }
+}
 
 // 4. Given an array of integers, produce a new array that contains all positive values of the original array, in their original order, followed by all values that are zero or negative, in their original order.
 //TODO
