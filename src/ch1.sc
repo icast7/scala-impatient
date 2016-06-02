@@ -11,7 +11,8 @@ val x = 3
 // 4. Scala lets you multiply a string with a number— try out "crazy" * 3 in the REPL. What does this operation do? Where can you find it in Scaladoc?
 "crazy" * 3
 
-// 5. What does 10 max 2 mean? In which class is the max method defined?//5. What does 10 max 2 mean? In which class is the max method defined?
+// 5. What does 10 max 2 mean? In which class is the max method defined?
+// Class scala.math.max
 10 max 2
 
 // 6. Using BigInt, compute 21024.
