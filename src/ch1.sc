@@ -2,7 +2,7 @@
 3
 
 // 2. In the Scala REPL, compute the square root of 3, and then square that value. By how much does the result differ from 3? (Hint: The res variables are your friend.)
-math.sqrt(math.sqrt(3))
+math.pow(math.sqrt(3), 2)
 
 // 3. Are the res variables val or var?
 //val
