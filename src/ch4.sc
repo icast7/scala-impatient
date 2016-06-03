@@ -21,6 +21,13 @@
  java.vm.name          | Java HotSpot( TM) Server VM
 **/
 //You need to find the length of the longest key before you can print the table.
+import scala.collection.JavaConversions.propertiesAsScalaMap
+val props : scala.collection.Map[String, String] = System.getProperties()
+println(props.size + " properties found")
+for ((k,v) <- props) {
+  print(k +"|" + v)
+  print("\n")
+}
 
 
 // 8. Write a function minmax( values: Array[ Int]) that returns a pair containing the smallest and largest values in the array.
