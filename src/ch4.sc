@@ -1,4 +1,7 @@
 // 1. Set up a map of prices for a number of gizmos that you covet. Then produce a second map with the same keys and the prices at a 10 percent discount.
+val gizmap100 = Map("Echo"->179.99, "Kindle"->119.99, "Chromecast Audio"->35.00)
+val gizmap90 = for((k,v) <- gizmap100) yield (k, v * 0.9)
+
 
 // 2. Write a program that reads words from a file. Use a mutable map to count how often each word appears. To read the words, simply use a java.util.Scanner: Click here to view code image val in = new java.util.Scanner( new java.io.File(" myfile.txt")) while (in.hasNext()) process in.next() Or look at Chapter 9 for a Scalaesque way. At the end, print out all words and their counts.
 
