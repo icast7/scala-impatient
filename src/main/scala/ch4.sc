@@ -60,8 +60,21 @@ while (scanner4.hasNext()){
 scanner4.close()
 treeMap
 
-
 // 6. Define a linked hash map that maps "Monday" to java.util.Calendar.MONDAY, and similarly for the other weekdays. Demonstrate that the elements are visited in insertion order.
+import java.util.Calendar
+import java.util.Locale
+import scala.collection.JavaConversions.mapAsScalaMap
+
+val daysOfWeek = Calendar.getInstance()
+  .getDisplayNames(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.US)
+val listMap = daysOfWeek.toList.sortBy(_._2)
+
+var linkedHashMap  = new scala.collection.mutable.LinkedHashMap[String, Int]()
+for ((a, b) <- listMap) {
+  linkedHashMap(a) = b
+}
+linkedHashMap
+
 
 // 7. Print a table of all Java properties, like this:
 /**
