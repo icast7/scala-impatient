@@ -5,23 +5,61 @@ val gizmap90 = for((k,v) <- gizmap100) yield (k, v * 0.9)
 
 // 2. Write a program that reads words from a file. Use a mutable map to count how often each word appears. To read the words, simply use a java.util.Scanner:  val in = new java.util.Scanner( new java.io.File(" myfile.txt")) while (in.hasNext()) process in.next() Or look at Chapter 9 for a Scalaesque way. At the end, print out all words and their counts.
 import java.io.File
+import java.util
 import java.util.Scanner
+
 import scala.collection.immutable.ListMap
 
-val scanner = new Scanner(new File("/Users/icaste/scala-impatient/src/main/resources/textfile.txt"))
+val scanner1 = new Scanner(new File("/Users/icastillejos/github/scala-impatient/out/production/scala-impatient/textfile.txt"))
 val countMap = new scala.collection.mutable.HashMap[String, Int]
-while (scanner.hasNext()){
-  val word: String = scanner.next()
+while (scanner1.hasNext()){
+  val word: String = scanner1.next()
   countMap(word) = countMap.getOrElse(word, 0) + 1
 }
+scanner1.close()
 ////Sort words by number of occurrences
 ListMap(countMap.toSeq.sortWith(_._2 > _._2):_*)
 
 // 3. Repeat the preceding exercise with an immutable map.
+val scanner2 = new Scanner(new File("/Users/icastillejos/github/scala-impatient/out/production/scala-impatient/textfile.txt"))
+var immutableMap = new scala.collection.immutable.HashMap[String, Int]
+while (scanner2.hasNext()){
+  val word: String = scanner2.next()
+  val occurrences = immutableMap.getOrElse(word, 0) + 1
+  immutableMap = immutableMap + (word -> occurrences)
+}
+scanner2.close()
+////Sort words by number of occurrences
+ListMap(immutableMap.toSeq.sortWith(_._2 > _._2):_*)
 
 // 4. Repeat the preceding exercise with a sorted map, so that the words are printed in sorted order.
+val scanner3 = new Scanner(new File("/Users/icastillejos/github/scala-impatient/out/production/scala-impatient/textfile.txt"))
+var immutableSortedMap = scala.collection.immutable.SortedMap[String, Int]()
+while (scanner3.hasNext()){
+  val word: String = scanner3.next()
+  var occurrences: Int = 1
+  if (immutableSortedMap.keySet.contains(word)){
+    occurrences = immutableSortedMap(word) + 1
+  }
+
+  immutableSortedMap =  immutableSortedMap + (word -> occurrences)
+}
+scanner3.close()
+immutableSortedMap
+////Sort words by number of occurrences
+ListMap(immutableSortedMap.toSeq.sortWith(_._2 > _._2):_*)
 
 // 5. Repeat the preceding exercise with a java.util.TreeMap that you adapt to the Scala API.
+import scala.collection.JavaConversions.mapAsScalaMap
+val scanner4 = new Scanner(new File("/Users/icastillejos/github/scala-impatient/out/production/scala-impatient/textfile.txt"))
+val treeMap: scala.collection.mutable.Map[String, Int] = new util.TreeMap[String, Int]
+while (scanner4.hasNext()){
+  val word: String = scanner4.next()
+  treeMap(word) = treeMap.getOrElse(word, 0) + 1
+}
+scanner4.close()
+treeMap
+
 
 // 6. Define a linked hash map that maps "Monday" to java.util.Calendar.MONDAY, and similarly for the other weekdays. Demonstrate that the elements are visited in insertion order.
 
