@@ -1,4 +1,21 @@
 // 1. Improve the Counter class in Section 5.1, “Simple Classes and Parameterless Methods,” on page 49 so that it doesn’t turn negative at Int.MaxValue.
+class Counter {
+  private var value : BigInt = 0
+
+  //Added this to test Int.MaxValue
+  def setValue(newValue: Int): Unit ={
+    value = newValue
+  }
+
+  def increment() { value += 1}
+
+  def current = value
+}
+
+val myCounter = new Counter
+myCounter.setValue(Int.MaxValue)
+myCounter.increment
+println(myCounter.current)
 
 // 2. Write a class BankAccount with methods deposit and withdraw, and a read-only property balance.
 
