@@ -18,8 +18,51 @@ myCounter.increment
 println(myCounter.current)
 
 // 2. Write a class BankAccount with methods deposit and withdraw, and a read-only property balance.
+class BankAccount {
+  private var internalBalance : Double = 0
+
+  def deposit(d: Double): Unit = {
+    if (d > 0)
+      internalBalance += d
+  }
+
+  def withdraw(w: Double): Unit = {
+    if (w > 0)
+      internalBalance -= w
+  }
+
+  def balance = internalBalance
+}
+val account = new BankAccount
+account.withdraw(320.50)
+account.deposit(585.75)
+account.balance
 
 // 3. Write a class Time with read-only properties hours and minutes and a method before( other: Time): Boolean that checks whether this time comes before the other. A Time object should be constructed as new Time( hrs, min), where hrs is in military time format (between 0 and 23).
+
+class Time(private val hrs:Int, private val min:Int) {
+  require(hrs > 0 && hrs < 24)
+  require(min > 0 && min < 60)
+
+  def before(t: Time) : Boolean = {
+
+    if (t.hours != this.hours)
+      //If hours are different returns TRUE if before and FALSE if after
+      return (t.hours < this.hours)
+    else
+      //If hours are equal return TRUE if minutes are before and FALSE otherwise
+      return (t.minutes < this.minutes)
+  }
+
+  def hours = hrs
+  def minutes = min
+}
+val timer = new Time(22,30)
+timer.hours
+timer.minutes
+timer.before(new Time(22,30))
+timer.before(new Time(22,31))
+timer.before(new Time(22,29))
 
 // 4. Reimplement the Time class from the preceding exercise so that the internal representation is the number of minutes since midnight (between 0 and 24 × 60 – 1). Do not change the public interface. That is, client code should be unaffected by your change.
 
