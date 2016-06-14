@@ -75,7 +75,6 @@ for ((a, b) <- listMap) {
 }
 linkedHashMap
 
-
 // 7. Print a table of all Java properties, like this:
 /**
   * java.runtime.name     | Java( TM) SE Runtime Environment
@@ -87,17 +86,32 @@ linkedHashMap
   * java.vm.name          | Java HotSpot( TM) Server VM
 **/
 //You need to find the length of the longest key before you can print the table.
-//import scala.collection.JavaConversions.propertiesAsScalaMap
-//val props : scala.collection.Map[String, String] = System.getProperties()
-//println(props.size + " properties found")
-//for ((k,v) <- props) {
-//  print(k +"|" + v)
-//  print("\n")
-//}
-
+import scala.collection.JavaConversions.propertiesAsScalaMap
+val props : scala.collection.Map[String, String] = System.getProperties()
+val longestKey = props.keySet.reduceLeft((a, b) => if (a.length>b.length) a else b)
+val padding = "%1$-" + longestKey.size +"s | %2$s"
+println(props.size + " properties found")
+for ((k,v) <- props) {
+  val result = padding.format(k, v)
+  println(result)
+}
 
 // 8. Write a function minmax( values: Array[ Int]) that returns a pair containing the smallest and largest values in the array.
+def getMinMax(intArray:Array[Int]) : (Int, Int) = {
+  return (intArray.min , intArray.max)
+}
+getMinMax(Array(9,8,7,6,1,2,3,4,5))
 
 // 9. Write a function lteqgt( values: Array[ Int], v: Int) that returns a triple containing the counts of values less than v, equal to v, and greater than v.
+def lteqgt(intArray:Array[Int], v:Int) : (Int, Int, Int) = {
+  val less = intArray.count(_ < v)
+  val equal = intArray.count(_ == v)
+  val greater = intArray.count(_ > v)
+  return (less, equal, greater )
+}
+lteqgt(Array(9,8,7,6,5,2,3,4,5), 5)
 
 // 10. What happens when you zip together two strings, such as "Hello". zip(" World")? Come up with a plausible use case.
+val word1 = "Hello"
+val word2 = "World"
+val zippedWords = word1.zip(word2)
