@@ -65,6 +65,28 @@ timer.before(new Time(22,31))
 timer.before(new Time(22,29))
 
 // 4. Reimplement the Time class from the preceding exercise so that the internal representation is the number of minutes since midnight (between 0 and 24 × 60 – 1). Do not change the public interface. That is, client code should be unaffected by your change.
+class TimeSinceMidnight(private val hrs:Int, private val min:Int) {
+  require(hrs > 0 && hrs < 24)
+  require(min > 0 && min < 60)
+
+  private var minSinceMidnight: Int = toMin(hrs, min)
+  def hours = hrs
+  def minutes = min
+
+  private def toMin(hrs:Int, min: Int): Int = {
+    return hrs * 60 + min
+  }
+
+  def before(t: Time) : Boolean = {
+    return toMin(t.hours, t.minutes) < minSinceMidnight
+  }
+}
+val timerSinceMidnight = new Time(21,30)
+timerSinceMidnight.hours
+timerSinceMidnight.minutes
+timerSinceMidnight.before(new Time(21,30))
+timerSinceMidnight.before(new Time(21,31))
+timerSinceMidnight.before(new Time(21,29))
 
 // 5. Make a class Student with read-write JavaBeans properties name (of type String) and id (of type Long). What methods are generated? (Use javap to check.) Can you call the JavaBeans getters and setters in Scala Should you?
 
