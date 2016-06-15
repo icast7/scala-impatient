@@ -95,18 +95,57 @@ class Student() {
   @BeanProperty var name : String = ""
   @BeanProperty var id : Long = 0
 }
-//Methods
+val student = new Student
+//Java Getters & Setters
+student.setId(976543210)
+student.setName("Name Lastname")
+student.getId
+student.getName
+//Scala Getters & Setters
+student.id = 123456789
+student.name = "Name2 Lastname2"
+student.id
+student.name
+
+//Compiled from "StudentBeanProps.scala"
+//public class Student {
+//  public java.lang.String name();
+//  public void name_$eq(java.lang.String);
+//  public void setName(java.lang.String);
+//  public long id();
+//  public void id_$eq(long);
+//  public void setId(long);
+//  public java.lang.String getName();
+//  public long getId();
+//  public Student();
+//}
+//
+//JavaBeans getters/setters can be called
+//Using scala style properties is a lot simpler
 
 // 6. In the Person class of Section 5.1, “Simple Classes and Parameterless Methods,” on page 49, provide a primary constructor that turns negative ages to 0.
+class Person {
+  private var privateAge = 0
+  def age = privateAge
+  def age_= (newValue : Int) {
+    if (newValue < 0)
+      privateAge = 0
+    else if (newValue > privateAge)
+      privateAge = newValue
+  }
+}
+var person = new Person
+person.age = -5
+person.age
 
 // 7. Write a class Person with a primary constructor that accepts a string containing a first name, a space, and a last name, such as new Person(" Fred Smith"). Supply read-only properties firstName and lastName. Should the primary constructor parameter be a var, a val, or a plain parameter? Why?
 
 //8. Make a class Car with read-only properties for manufacturer, model name, and model year, and a read-write property for the license plate. Supply four constructors. All require the manufacturer and model name. Optionally, model year and license plate can also be specified in the constructor. If not, the model year is set to -1 and the license plate to the empty string. Which constructor are you choosing as the primary constructor? Why?
-class Car{
+class Car(val manufacturer: String, val modelName: String){
 
 }
 
 // 9. Reimplement the class of the preceding exercise in Java, C#, or C + + (your choice). How much shorter is the Scala class?
-//See ./Car.java
+//See ./_5_9_Car.java
 
 // 10. Consider the class  class Employee( val name: String, var salary: Double) { def this() { this(" John Q. Public", 0.0) } } Rewrite it to use explicit fields and a default primary constructor. Which form do you prefer? Why?
