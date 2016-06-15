@@ -89,10 +89,13 @@ timerSinceMidnight.before(new Time(21,31))
 timerSinceMidnight.before(new Time(21,29))
 
 // 5. Make a class Student with read-write JavaBeans properties name (of type String) and id (of type Long). What methods are generated? (Use javap to check.) Can you call the JavaBeans getters and setters in Scala Should you?
+import scala.beans.BeanProperty
 
-class Student {
-
+class Student() {
+  @BeanProperty var name : String = ""
+  @BeanProperty var id : Long = 0
 }
+//Methods
 
 // 6. In the Person class of Section 5.1, “Simple Classes and Parameterless Methods,” on page 49, provide a primary constructor that turns negative ages to 0.
 
@@ -104,8 +107,6 @@ class Car{
 }
 
 // 9. Reimplement the class of the preceding exercise in Java, C#, or C + + (your choice). How much shorter is the Scala class?
-public class
-
-
+//See ./Car.java
 
 // 10. Consider the class  class Employee( val name: String, var salary: Double) { def this() { this(" John Q. Public", 0.0) } } Rewrite it to use explicit fields and a default primary constructor. Which form do you prefer? Why?
