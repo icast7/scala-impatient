@@ -170,3 +170,36 @@ class Car(val manufacturer: String, val modelName: String, val modelYear: Int, v
 //See ./_5_9_Car.java
 
 // 10. Consider the class class Employee( val name: String, var salary: Double) { def this() { this(" John Q. Public", 0.0) } } Rewrite it to use explicit fields and a default primary constructor. Which form do you prefer? Why?
+class Employee(val name: String, var salary: Double)  {
+  def this() {
+    this(" John Q. Public", 0.0)
+  }
+}
+val e1 = new Employee
+e1.name
+e1.salary
+//e1.name = "can't assign to read-only prop"
+e1.salary = 98.0
+e1.salary
+val e2 = new Employee("name1", 1234.0)
+e2.name
+e2.salary
+
+class Employee2 {
+  val name : String = ""
+  var salary : Double = 0.0
+
+  def this(name: String, salary: Double) {
+    this()
+  }
+}
+val ee1 = new Employee2
+ee1.name
+ee1.salary
+//ee1.name = "can't assign to read-only prop"
+ee1.salary = 98.0
+ee1.salary
+val ee2 = new Employee("name1", 1234.0)
+ee2.name
+ee2.salary
+//I prefer the second form as it is easier to visualize the default values
