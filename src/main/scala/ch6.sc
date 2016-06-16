@@ -48,15 +48,23 @@ MilesToKilometers.convert(1)
 
 // 3. Define an Origin object that extends java.awt.Point. Why is this not actually a good idea? (Have a close look at the methods of the Point class.)
 object Origin extends java.awt.Point {
+  //Don't to allow the Origin point to ever move or mutate
+  override def move(x: Int,  y:Int) : Unit = {
+  }
 
+  override def setLocation(p: java.awt.Point) : Unit = {
+    move(p.x, p.y)
+  }
 }
 
 // 4. Define a Point class with a companion object so that you can construct Point instances as Point( 3, 4), without using new.
-class Point(val a: Int, val b:Int) {}
-object Point {
-  def apply(a: Int, b: Int): Point = { new Point(a, b) }
+class Point1(val a: Int, val b:Int) {
+  println("Creating new instance of class Point")
 }
-val p = Point(0, 1)
+object Point1 {
+  def apply(a: Int, b: Int): Point1 = { new Point1(a, b) }
+}
+val p = Point1(0, 1)
 p.a
 p.b
 
