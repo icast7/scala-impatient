@@ -65,6 +65,16 @@ p.b
 //See _6_5_scalaApp.scala
 
 // 6. Write an enumeration describing the four playing card suits so that the toString method returns ♣, ♦, ♥, or ♠.
+object Poker extends Enumeration {
+  val club = Value ("♣")
+  val diamond = Value ("♦")
+  val heart = Value ("♥")
+  val spade = Value ("♠")
+}
+Poker.club
+Poker.diamond
+Poker.heart
+Poker.spade
 
 // 7. Implement a function that checks whether a card suit value from the preceding exercise is red.
 
