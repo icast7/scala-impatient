@@ -1,6 +1,50 @@
 // 1. Write an object Conversions with methods inchesToCentimeters, gallonsToLiters, and milesToKilometers.
+object Conversions {
+  def inchesToCentimeters(inches: Double): Double = {
+    val centimeters = inches * 2.54
+    centimeters
+  }
+  def gallonsToLiters(gallons: Double): Double = {
+    val liters = gallons * 3.78541
+    liters
+  }
+  def milesToKilometers(miles: Double): Double = {
+    val kilometers = miles * 1.60934
+    kilometers
+  }
+}
+Conversions.inchesToCentimeters(1)
+Conversions.gallonsToLiters(1)
+Conversions.milesToKilometers(1)
 
 // 2. The preceding problem wasn’t very object-oriented. Provide a general superclass UnitConversion and define objects InchesToCentimeters, GallonsToLiters, and MilesToKilometers that extend it.
+abstract class UnitConversion(val objectName: String){
+  def convert(inches: Double) : Double
+}
+object InchesToCentimeters extends UnitConversion("InchesToCentimeters") {
+  override def convert(n: Double): Double ={
+    val centimeters = n * 2.54
+    centimeters
+  }
+}
+object GallonsToLiters extends UnitConversion("GallonsToLiters") {
+  override def convert(n: Double): Double ={
+    val liters = n * 3.78541
+    liters
+  }
+}
+object MilesToKilometers extends UnitConversion("MilesToKilometers") {
+  override def convert(n: Double): Double ={
+    val kilometers = n * 1.60934
+    kilometers
+  }
+}
+InchesToCentimeters.objectName
+InchesToCentimeters.convert(1)
+GallonsToLiters.objectName
+GallonsToLiters.convert(1)
+MilesToKilometers.objectName
+MilesToKilometers.convert(1)
 
 // 3. Define an Origin object that extends java.awt.Point. Why is this not actually a good idea? (Have a close look at the methods of the Point class.)
 
