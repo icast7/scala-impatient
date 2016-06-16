@@ -52,12 +52,17 @@ object Origin extends java.awt.Point {
 }
 
 // 4. Define a Point class with a companion object so that you can construct Point instances as Point( 3, 4), without using new.
-class Point() {
+class Point(val a: Int, val b:Int) {
 
 }
 object Point {
-
+  def apply(a: Int, b: Int): Point = {
+    new Point(a, b)
+  }
 }
+val p = Point(0, 1)
+p.a
+p.b
 
 // 5. Write a Scala application, using the App trait, that prints the command-line arguments in reverse order, separated by spaces. For example, scala Reverse Hello World should print World Hello.
 
