@@ -52,13 +52,9 @@ object Origin extends java.awt.Point {
 }
 
 // 4. Define a Point class with a companion object so that you can construct Point instances as Point( 3, 4), without using new.
-class Point(val a: Int, val b:Int) {
-
-}
+class Point(val a: Int, val b:Int) {}
 object Point {
-  def apply(a: Int, b: Int): Point = {
-    new Point(a, b)
-  }
+  def apply(a: Int, b: Int): Point = { new Point(a, b) }
 }
 val p = Point(0, 1)
 p.a
