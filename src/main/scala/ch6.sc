@@ -73,17 +73,45 @@ p.b
 //See _6_5_scalaApp.scala
 
 // 6. Write an enumeration describing the four playing card suits so that the toString method returns ♣, ♦, ♥, or ♠.
-object Poker extends Enumeration {
+object Suit extends Enumeration {
+  type Suit = Value
   val club = Value ("♣")
   val diamond = Value ("♦")
   val heart = Value ("♥")
   val spade = Value ("♠")
 }
-Poker.club
-Poker.diamond
-Poker.heart
-Poker.spade
+Suit.club
+Suit.diamond
+Suit.heart
+Suit.spade
 
 // 7. Implement a function that checks whether a card suit value from the preceding exercise is red.
+def isRed(s: Suit.Suit) : Boolean = {
+  s == Suit.heart | s== Suit.diamond
+}
+isRed(Suit.club)
+isRed(Suit.diamond)
+isRed(Suit.heart)
+isRed(Suit.spade)
 
 // 8. Write an enumeration describing the eight corners of the RGB color cube. As IDs, use the color values (for example, 0xff0000 for Red).
+object color extends Enumeration {
+  type color = Value
+  val Black =   (0x000000, "Black")
+  val Green =   (0x0000ff, "Green")
+  val Blue =    (0x00ff00, "Blue")
+  val Cyan =    (0x00ffff, "Cyan")
+  val Red =     (0xff0000, "Red")
+  val Magenta = (0xff00ff, "Magenta")
+  val Yellow =  (0xffff00, "Yellow")
+  val White =   (0xffffff, "White")
+}
+val hexFormat = "0X%06X"
+color.Black._2 + ": "+ hexFormat.format(color.Black._1)
+color.Green._2 + ": "+ hexFormat.format(color.Green._1)
+color.Blue._2 + ": "+ hexFormat.format(color.Blue._1)
+color.Cyan._2 + ": "+ hexFormat.format(color.Cyan._1)
+color.Red._2 + ": "+ hexFormat.format(color.Red._1)
+color.Magenta._2 + ": "+ hexFormat.format(color.Magenta._1)
+color.Yellow._2 + ": "+ hexFormat.format(color.Yellow._1)
+color.White._2 + ": "+ hexFormat.format(color.White._1)
