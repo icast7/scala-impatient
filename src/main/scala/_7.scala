@@ -50,3 +50,33 @@ object app_7_2 extends App {
 }
 //scalac /Users/icaste/scala-impatient/src/main/scala/_7.scala
 //scala -Dscala.time app_7_2
+
+// // 3. Write a package random with functions nextInt(): Int, nextDouble(): Double, and setSeed( seed: Int): Unit. To
+// generate random numbers, use the linear congruential generator next = (previous × a + b) mod 2^n, where a = 1664525,
+// b = 1013904223, n = 32, and the initial value of previous is seed.
+
+package randompackage {
+  package object random {
+    private val a : Double = 1664525.0
+    private val b : Double = 1013904223.0
+    private val n : Double = 32.0
+    var next : Int = 0
+
+    def setSeed(seed: Int): Unit = {
+      next = seed
+    }
+
+    def nextInt() : Int = {
+      next = Math.round((next * a +b) % math.pow(2,32).toInt).toInt
+      next
+    }
+
+    def nextDouble() : Double = {
+      val nextDouble : Double = ((next * a +b) % math.pow(2,32).toInt)
+      next = nextDouble.toInt
+      nextDouble
+    }
+  }
+  package random {
+  }
+}
