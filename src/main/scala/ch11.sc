@@ -1,6 +1,10 @@
 // 1. According to the precedence rules, how are 3 + 4 -> 5 and 3 -> 4 + 5 evaluated?
-//
-//
+// -> Method provided by implicit conversion operator
+//Sum is evaluated first, KV is evaluated second
+3 + 4 -> 5
+//This throws an error as the KV is evaluated first and cannot be added to an Int
+// 3 -> 4 + 5
+
 // 2. The BigInt class has a pow method, not an operator. Why didn’t the Scala library designers choose ** (as in Fortran) or ^ (as in Pascal) for a power operator?
 //
 //
