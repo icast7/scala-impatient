@@ -77,7 +77,10 @@ s.withdraw(5)
 s.currentBalance
 
 // 3. Consult your favorite Java or C + + textbook that is sure to have an example of a toy inheritance hierarchy, perhaps involving employees, pets, graphical shapes, or the like. Implement the example in Scala.
+//From https://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html
+class Bicycle(var cadence: Int,   var gear: Int, var speed: Int) {}
 
+class MountainBike(var seatHeight:Int, cadence: Int, gear: Int, speed: Int) extends Bicycle(cadence, gear, speed){}
 
 // 4. Define an abstract class Item with methods price and description. A SimpleItem is an item whose price and description are specified in the constructor. Take advantage of the fact that a val can override a def. A Bundle is an item that contains other items. Its price is the sum of the prices in the bundle. Also provide a mechanism for adding items to the bundle and a suitable description method.
 
