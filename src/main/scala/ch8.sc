@@ -45,20 +45,17 @@ class SavingsAccount(initialBalance: Double, private  val interest: Double) exte
   private var numOfWithdrawals = 0
 
   override def deposit(amount: Double) = {
-    println("NumberOfDeposits: " +  numOfDeposits)
+    numOfDeposits+=1
     if (numOfDeposits > 3)
       super.withdraw(1)
-    numOfDeposits+=1
-
-
+    println("NumberOfDeposits: " +  numOfDeposits)
     super.deposit(amount)
   }
   override def withdraw(amount: Double) = {
-    println("NumberOfWithdrawals: " +  numOfDeposits)
+    numOfWithdrawals+=1
     if (numOfWithdrawals > 3)
       super.withdraw(1)
-    numOfWithdrawals+=1
-
+    println("NumberOfWithdrawals: " +  numOfWithdrawals)
     super.withdraw(amount)
   }
 
@@ -73,8 +70,11 @@ s.deposit(5)
 s.deposit(5)
 s.deposit(5)
 s.deposit(5)
+s.withdraw(5)
+s.withdraw(5)
+s.withdraw(5)
+s.withdraw(5)
 s.currentBalance
-
 
 // 3. Consult your favorite Java or C + + textbook that is sure to have an example of a toy inheritance hierarchy, perhaps involving employees, pets, graphical shapes, or the like. Implement the example in Scala.
 
