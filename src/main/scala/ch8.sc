@@ -25,10 +25,12 @@ class BankAccount (initialBalance: Double) {
 
 class CheckingAccount(initialBalance: Double) extends BankAccount(initialBalance) {
   override def deposit(amount: Double) = {
-    super.deposit(amount - 1)
+    super.deposit(amount)
+    super.withdraw(1)
   }
   override def withdraw(amount: Double) = {
-    super.withdraw(amount + 1)
+    super.withdraw(amount)
+    super.withdraw(1)
   }
 }
 
@@ -38,6 +40,40 @@ a.deposit(5)
 a.withdraw(2)
 
 // 2. Extend the BankAccount class of the preceding exercise into a class SavingsAccount that earns interest every month (when a method earnMonthlyInterest is called) and has three free deposits or withdrawals every month. Reset the transaction count in the earnMonthlyInterest method.
+class SavingsAccount(initialBalance: Double, private  val interest: Double) extends BankAccount(initialBalance){
+  private var numOfDeposits = 0
+  private var numOfWithdrawals = 0
+
+  override def deposit(amount: Double) = {
+    println("NumberOfDeposits: " +  numOfDeposits)
+    if (numOfDeposits > 3)
+      super.withdraw(1)
+    numOfDeposits+=1
+
+
+    super.deposit(amount)
+  }
+  override def withdraw(amount: Double) = {
+    println("NumberOfWithdrawals: " +  numOfDeposits)
+    if (numOfWithdrawals > 3)
+      super.withdraw(1)
+    numOfWithdrawals+=1
+
+    super.withdraw(amount)
+  }
+
+  def earnMonthlyInterest(): Unit ={
+    val earnings = currentBalance * interest/100
+    super.deposit(earnings)
+  }
+}
+val s = new SavingsAccount(100, 10)
+s.currentBalance
+s.deposit(5)
+s.deposit(5)
+s.deposit(5)
+s.deposit(5)
+s.currentBalance
 
 
 // 3. Consult your favorite Java or C + + textbook that is sure to have an example of a toy inheritance hierarchy, perhaps involving employees, pets, graphical shapes, or the like. Implement the example in Scala.
