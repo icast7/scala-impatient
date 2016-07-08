@@ -6,8 +6,8 @@
 // 3 -> 4 + 5
 
 // 2. The BigInt class has a pow method, not an operator. Why didn’t the Scala library designers choose ** (as in Fortran) or ^ (as in Pascal) for a power operator?
-//
-//
+
+
 // 3. Implement the Fraction class with operations + - * /. Normalize fractions, for example turning 15/– 6 into –5/ 2. Divide by the greatest common divisor, like this: Click here to view code image
 //
 // class Fraction( n: Int, d: Int) {
